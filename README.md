@@ -38,6 +38,8 @@ data/
   output_annotations.csv          spectral-library hits (annotation flags for figures)
   output_metadata.csv             injection metadata
   metadata_updated.tsv            injection → condition / heat-treatment / concentration map
+  standards_ms2/                  reference-standard MS² spectra (.mgf) used for the Figure 2
+                                  mirror-plot confirmations (cholesterol + 4 COP standards)
 ```
 
 ## Reproducing the figures
