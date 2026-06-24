@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<vizmap id="VizMap" documentVersion="3.0">
+    <visualStyle name="COP_FBMN">
+        <network>
+            <visualProperty name="NETWORK_BACKGROUND_PAINT" default="#FFFFFF"/>
+            <visualProperty name="NETWORK_NODE_SELECTION" default="true"/>
+            <visualProperty name="NETWORK_EDGE_SELECTION" default="true"/>
+        </network>
+        <node>
+            <dependency name="nodeCustomGraphicsSizeSync" value="true"/>
+            <dependency name="nodeSizeLocked" value="true"/>
+
+            <visualProperty name="NODE_SHAPE" default="ELLIPSE"/>
+            <visualProperty name="NODE_FILL_COLOR" default="#CCCCCC"/>
+            <visualProperty name="NODE_TRANSPARENCY" default="255"/>
+            <visualProperty name="NODE_BORDER_PAINT" default="#888888"/>
+            <visualProperty name="NODE_BORDER_WIDTH" default="1.0">
+                <discreteMapping attributeName="Compound_Name" attributeType="string">
+                    <!-- Default 1.0 covers unannotated; annotated nodes get thicker border via passthrough below -->
+                </discreteMapping>
+            </visualProperty>
+            <visualProperty name="NODE_BORDER_STROKE" default="SOLID"/>
+
+            <!-- Node size: continuous mapping on sum(precursor intensity), log-feel via spaced handles -->
+            <visualProperty name="NODE_SIZE" default="30.0">
+                <continuousMapping attributeName="sum(precursor intensity)" attributeType="float">
+                    <continuousMappingPoint attrValue="0.0"        equalValue="15.0" greaterValue="15.0" lesserValue="15.0"/>
+                    <continuousMappingPoint attrValue="10000.0"    equalValue="25.0" greaterValue="25.0" lesserValue="15.0"/>
+                    <continuousMappingPoint attrValue="100000.0"   equalValue="40.0" greaterValue="40.0" lesserValue="25.0"/>
+                    <continuousMappingPoint attrValue="1000000.0"  equalValue="60.0" greaterValue="60.0" lesserValue="40.0"/>
+                    <continuousMappingPoint attrValue="10000000.0" equalValue="90.0" greaterValue="90.0" lesserValue="60.0"/>
+                    <continuousMappingPoint attrValue="100000000.0" equalValue="120.0" greaterValue="120.0" lesserValue="90.0"/>
+                </continuousMapping>
+            </visualProperty>
+
+            <!-- Node label: only annotated nodes show a label -->
+            <visualProperty name="NODE_LABEL" default="">
+                <passthroughMapping attributeName="Compound_Name" attributeType="string"/>
+            </visualProperty>
+            <visualProperty name="NODE_LABEL_COLOR" default="#000000"/>
+            <visualProperty name="NODE_LABEL_FONT_SIZE" default="10"/>
+            <visualProperty name="NODE_LABEL_POSITION" default="C,C,c,0.00,0.00"/>
+
+            <!-- Pie chart: heated (red) vs unheated (blue) -->
+            <visualProperty name="NODE_CUSTOMGRAPHICS_1" default='org.cytoscape.PieChart: attributelist="GNPSGROUP:heated,GNPSGROUP:unheated" colorlist="#E8847A,#A8C8E8" showlabels=false'/>
+            <visualProperty name="NODE_CUSTOMGRAPHICS_POSITION_1" default="C,C,c,0.00,0.00"/>
+            <visualProperty name="NODE_CUSTOMGRAPHICS_SIZE_1" default="50.0"/>
+
+            <visualProperty name="NODE_TOOLTIP" default="">
+                <passthroughMapping attributeName="Compound_Name" attributeType="string"/>
+            </visualProperty>
+        </node>
+        <edge>
+            <dependency name="arrowColorMatchesEdge" value="false"/>
+
+            <visualProperty name="EDGE_PAINT" default="#BBBBBB"/>
+            <visualProperty name="EDGE_STROKE_UNSELECTED_PAINT" default="#BBBBBB"/>
+            <visualProperty name="EDGE_TRANSPARENCY" default="200"/>
+            <visualProperty name="EDGE_LINE_TYPE" default="SOLID"/>
+
+            <!-- Edge width: continuous mapping on cosine_score -->
+            <visualProperty name="EDGE_WIDTH" default="1.0">
+                <continuousMapping attributeName="cosine_score" attributeType="float">
+                    <continuousMappingPoint attrValue="0.6" equalValue="1.0" greaterValue="1.0" lesserValue="0.5"/>
+                    <continuousMappingPoint attrValue="0.8" equalValue="3.0" greaterValue="3.0" lesserValue="1.0"/>
+                    <continuousMappingPoint attrValue="1.0" equalValue="6.0" greaterValue="6.0" lesserValue="3.0"/>
+                </continuousMapping>
+            </visualProperty>
+
+            <visualProperty name="EDGE_LABEL" default=""/>
+            <visualProperty name="EDGE_SOURCE_ARROW_SHAPE" default="NONE"/>
+            <visualProperty name="EDGE_TARGET_ARROW_SHAPE" default="NONE"/>
+        </edge>
+    </visualStyle>
+</vizmap>

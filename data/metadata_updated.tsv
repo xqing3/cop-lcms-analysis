@@ -1,0 +1,7 @@
+filename	ATTRIBUTE_Condition	ATTRIBUTE_HeatTreatment	ATTRIBUTE_Concentration
+unheated_chol_10ug_pos_MSMS_041526_008.mzML	unheated_10ug	unheated	10ug
+unheated_chol_10ug_pos_MSMS_041526_009.mzML	unheated_10ug	unheated	10ug
+heated_chol_100ug_pos_MSMS_041526_012.mzML	heated_100ug	heated	100ug
+heated_chol_100ug_pos_MSMS_041526_013.mzML	heated_100ug	heated	100ug
+heated_chol_1000ug_pos_MSMS_041526_016.mzML	heated_1000ug	heated	1000ug
+heated_chol_1000ug_pos_MSMS_041526_017.mzML	heated_1000ug	heated	1000ug
