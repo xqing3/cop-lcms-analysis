@@ -14,7 +14,7 @@ the molecular-networking analysis. The underlying raw and processed mass-spectro
 
 Thermo `.raw` → **msconvert** → `.mzML` → **MZmine 4.9.14** (`mzmine/COPs_v2.mzbatch`):
 feature detection, alignment, ion-identity molecular networking (IIMN), and exports →
-**GNPS FBMN** + **SIRIUS** + spectral-library annotation → figures.
+**GNPS FBMN** + spectral-library annotation → figures.
 
 The `.mzbatch` is XML and hard-codes absolute input paths to the original `.mzML` files;
 adjust those paths before re-running in MZmine 4.9.14.
